@@ -7,7 +7,6 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
 
-#from photos.models import Post
 from .models import Post
 from .models import Tag
 from .forms import PostForm
