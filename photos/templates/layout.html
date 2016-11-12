@@ -1,0 +1,14 @@
+{% load bootstrap3 %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>{% block page_title %}Pystagram{% endblock %}</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body class='container'>
+    {% block body %} {% endblock %}
+</body>
+</html>

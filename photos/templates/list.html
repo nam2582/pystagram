@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>{% block page_title %}list.html{% endblock %}</title>
+</head>
+
+<body>
+{% block body %}
+    <div>
+        <h1>사진목록</h1>
+
+        {% for post in posts %}
+        <div class="photo_container">
+            <p>{{ post.content }} </p>
+            <p>
+                <a href="{% url 'photos:view' pk=post.pk %}"> {{ post.created_at }}</a>
+            </p>
+        </div>
+
+        {% empty %}
+        <p>게시물이 없습니다.</p>
+        {% endfor %}
+
+        {# {% bootstrap_pagination posts %} #}
+    </div>
+{% endblock %}
+</body>
+
+</html>

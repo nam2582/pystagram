@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+{% extends 'layout.html' %}
+<head>
+    <title>{% block page_title %}view.html{% endblock %}</title>
+</head>
+<body>
+{% block body %}
+    <h3>{{ post.pk }} 번 사진</h3>
+
+    <div>{{ post.content }}</div>
+
+        <p>
+            {{ post.created_at}}
+        </p>
+
+    {% for comment in post.comment_set.all %}
+        <p>{{ comment.pk }}</p>
+        <p>{{ comment.content }}</p>
+    {% empty %}
+        <p>댓글이 없습니다.</p>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
