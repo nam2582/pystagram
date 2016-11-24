@@ -1,14 +1,15 @@
 {% load bootstrap3 %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+{% load static from staticfiles %}
+<!DOCTYPE html>
 <html>
-<head>
-    <title>{% block page_title %}Pystagram{% endblock %}</title>
+    <head>
+        <title>{% block page_title %}Pystagram{% endblock %}</title>
+        <script src="{% static 'hello.js' %}"></script>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-</head>
+    </head>
 
-<body class='container'>
-    {% block body %} {% endblock %}
-</body>
+    <body class="container">
+        {% block body %}{% endblock %}
+    </body>
 </html>

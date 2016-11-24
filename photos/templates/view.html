@@ -1,26 +1,47 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 {% extends 'layout.html' %}
-<head>
-    <title>{% block page_title %}view.html{% endblock %}</title>
-</head>
-<body>
+{% load bootstrap3 %}
+
+{% block page_title %}글 보기{% endblock %}
+
 {% block body %}
-    <h3>{{ post.pk }} 번 사진</h3>
 
-    <div>{{ post.content }}</div>
+<h3>{{ post.pk }}번 사진</h3>
 
-        <p>
-            {{ post.created_at}}
-        </p>
+{% if post.image %}
+<p><img src="{{ post.image.url }}" /></p>
+{% endif %}
 
-    {% for comment in post.comment_set.all %}
+<div>Content = {{ post.content }}</div>
+
+<div>Category = {{ post.category }}</div>
+
+<p>
+    {{ post.created_at }}
+</p>
+
+{% for comment in post.comment_set.all %}
+    <div>
         <p>{{ comment.pk }}</p>
         <p>{{ comment.content }}</p>
-    {% empty %}
-        <p>댓글이 없습니다.</p>
-    {% endfor %}
+        <form method="POST" action="{% url 'photos:delete_comment' pk=comment.pk %}">
+            {% csrf_token %}
+            <button type="submit">댓글 삭제</button>
+        </form>
+    </div>
+{% empty %}
+    <p>댓글이 없습니다.</p>
+{% endfor %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {% bootstrap_form comment_form %}
+    <p>
+        <button type="submit" class="btn btn-primary btn-lg">
+            {% bootstrap_icon "star" %} 저장</button>
+    </p>
+</form>
+
+
 {% endblock %}
-</body>
-</html>
+
+
