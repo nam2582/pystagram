@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('category', 'image', 'content', )
+        fields = ('user', 'category', 'image', 'content', )
 
 #    def clean(self):
 #        password1 = self.cleaned_data['password1']
@@ -31,6 +31,6 @@ class PostForm(forms.ModelForm):
         return content
 
 
-class SimpleForm(forms.Form):
-    title = forms.CharField(min_length=3, max_length=10)
-    content = forms.CharField(widget=forms.Textarea)
+#class SimpleForm(forms.Form):
+#    title = forms.CharField(min_length=3, max_length=10)
+#    content = forms.CharField(widget=forms.Textarea)
