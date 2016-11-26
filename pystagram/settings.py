@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pystagram.sample_middleware.SampleMiddleware',
 ]
 
 ROOT_URLCONF = 'pystagram.urls'
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'pystagram.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates1')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,3 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/uploads/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploadfiles')
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/photos/'
