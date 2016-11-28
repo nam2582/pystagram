@@ -58,9 +58,7 @@ def list_posts(request):
     page = request.GET.get('page', 1)
     per_page = 6
 
-    posts = Post.objects \
-                .all() \
-                .order_by('-created_at', '-pk')
+    posts = Post.objects.all().order_by('-created_at', '-pk')
 
     pg = Paginator(posts, per_page)
     try:

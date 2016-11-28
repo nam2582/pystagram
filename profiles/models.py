@@ -9,3 +9,8 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     gender = models.CharField(max_length=1, null=True, blank=True, choices=_genders)
+
+
+    def __str__(self):
+        return '{}'.format(self.pk)
+

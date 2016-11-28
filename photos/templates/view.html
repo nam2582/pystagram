@@ -15,13 +15,14 @@
 <div><p>Category = {{ post.category }}</p></div>
 <div><p>Content = {{ post.content }}</p></div>
 <div><p>User = {{ post.user }}</p></div>
+<div><p>Tag = {{ post.tags }}</p></div>
+
 
 <p>Created at = {{ post.created_at }}</p>
 
 {% for comment in post.comment_set.all %}
     <div>
-        <p>{{ comment.pk }}</p>
-        <p>{{ comment.content }}</p>
+        <p> comment pk = {{ comment.pk }}. {{ comment.content }}</p>
         <form method="POST" action="{% url 'photos:delete_comment' pk=comment.pk %}">
             {% csrf_token %}
             <button type="submit">댓글 삭제</button>
